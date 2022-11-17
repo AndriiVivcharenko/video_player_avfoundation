@@ -53,14 +53,20 @@ class CreateMessage {
 }
 
 class MixWithOthersMessage {
-  MixWithOthersMessage(this.mixWithOthers);
+  MixWithOthersMessage(this.mixWithOthers, this.controlAVAudioSesson);
   bool mixWithOthers;
+  bool controlAVAudioSesson;
+}
+
+class InitializeMessage {
+  InitializeMessage(this.controlAVAudioSesson);
+  bool controlAVAudioSesson;
 }
 
 @HostApi(dartHostTestHandler: 'TestHostVideoPlayerApi')
 abstract class AVFoundationVideoPlayerApi {
-  @ObjCSelector('initialize')
-  void initialize();
+  @ObjCSelector('initialize:')
+  void initialize(InitializeMessage msg);
   @ObjCSelector('create:')
   TextureMessage create(CreateMessage msg);
   @ObjCSelector('dispose:')
