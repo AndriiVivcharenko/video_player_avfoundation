@@ -556,7 +556,7 @@ NS_INLINE UIViewController *rootViewController() {
                    error:(FlutterError *_Nullable __autoreleasing *)error {
   // Allow audio playback when the Ring/Silent switch is set to silent
   if(input.controlAVAudioSesson.boolValue) {
-    [[AVAudioSession sharedInstance] setCategory:AVAudioSessionCategoryPlayAndRecord error:nil];
+    [[AVAudioSession sharedInstance] setCategory:AVAudioSessionCategoryPlayback error:nil];
   }
 
   [self.playersByTextureId
@@ -654,11 +654,11 @@ NS_INLINE UIViewController *rootViewController() {
                    error:(FlutterError *_Nullable __autoreleasing *)error {
                     
   if (input.mixWithOthers.boolValue && input.controlAVAudioSesson.boolValue) {
-    [[AVAudioSession sharedInstance] setCategory:AVAudioSessionCategoryPlayAndRecord
+    [[AVAudioSession sharedInstance] setCategory:AVAudioSessionCategoryPlayback
                                      withOptions:AVAudioSessionCategoryOptionMixWithOthers
                                            error:nil];
   } else if(input.controlAVAudioSesson.boolValue) {
-    [[AVAudioSession sharedInstance] setCategory:AVAudioSessionCategoryPlayAndRecord error:nil];
+    [[AVAudioSession sharedInstance] setCategory:AVAudioSessionCategoryPlayback error:nil];
   }
 }
 
